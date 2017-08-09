@@ -44,8 +44,8 @@ function init(){
 	var r = Math.random()*20+1;
 	var x = Math.random()*(win_width -2*r) + r;
 	var y = Math.random()*(win_height-2*r) + r;
-	var dx = (Math.random()-0.5);
-	var dy = (Math.random()-0.5);
+	var dx = (Math.random()-0.5)*3;
+	var dy = (Math.random()-0.5)*3;
 	var color_style =colorArray[Math.floor(Math.random()*colorArray.length)];
 	var circle = new Circle(x,y,dx,dy,r,color_style);
 
