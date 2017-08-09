@@ -27,7 +27,7 @@ window.addEventListener('resize',function(){
 
 
 var max_r=80;
-var min_r =3;
+var min_r =2;
 
 var colorArray =['#2c3e50','#e74c3c','#ecf0f1','#3498db','#298089'];
 
