@@ -67,7 +67,7 @@ function Circle(x,y,dx,dy,r,color_style){
 	this.min_r=r;
 	this.draw = function(){
 		c.beginPath();
-		c.arc(this.x,this.y,this.r,Math.random(),Math.PI*2,false);
+		c.arc(this.x,this.y,this.r,0,Math.PI*2,false);
 		c.fillStyle=color_style;
 		c.fill();
 	}
