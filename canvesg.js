@@ -1,4 +1,4 @@
-console.log('canvasg init');
+console.log('canvasg init c at dinuka saminda 2017');
 
 var win_width=undefined;
 var win_height=undefined;
@@ -24,32 +24,7 @@ window.addEventListener('mousemove',
 window.addEventListener('resize',function(){
 	init();
 });
-/*
-c.fillStyle = 'rgba(255,0,0,.5)';
-c.fillRect(100,100,200,200);
 
-c.fillStyle = 'rgba(255,255,0,.5)';
-c.fillRect(200,200,200,200);
-
-
-c.beginPath();
-c.moveTo(50,300);
-c.lineTo(300,100);
-c.lineTo(400,300);
-
-c.strokeStyle ='#f1f1f1'; //any css style
-c.stroke();
-
-for(var i=0;i<100;i++){
-	var x = Math.random()*win_width;
-	var y = Math.random()*win_height;
-
-	c.beginPath();
-	c.arc(x,y,30,0,Math.PI*2,false);
-	c.stroke();
-
-}
-*/
 
 var max_r=80;
 var min_r =3;
