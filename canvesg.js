@@ -54,7 +54,8 @@ function init(){
 }
 
 $('#banner').css('top',win_height/2);
-$('#banner').css('left',win_width/4);
+$('#banner').css('left',0);
+$('#banner').css('right',win_width);
 function Circle(x,y,dx,dy,r,color_style){
 	this.x = x;
 	this.y = y;
