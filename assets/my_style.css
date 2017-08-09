@@ -1,0 +1,10 @@
+.my_show_cls {
+    visibility: visible;
+    display: default;
+}
+
+.my_hidden_cls {
+    visibility: hidden;
+    display: none;
+}
+
