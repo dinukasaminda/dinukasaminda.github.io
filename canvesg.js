@@ -27,12 +27,45 @@ window.addEventListener('resize',function(){
 
 
 var max_r=80;
-var min_r =2;
+var min_r =3;
 
 var colorArray =['#2c3e50','#e74c3c','#ecf0f1','#3498db','#298089'];
 
+function randomIntFromRange(min,max){
+	return Math.floor(Math.random()*(max-min+1)+min);
 
+}
+function randomColor(colors){
+	return colors[Math.floor(Math.random()*colors.length)];
+
+}
+
+$('#main_canv').click(function(){
+	console.log('aaaa');
+
+	win_width=window.innerWidth;
+	win_height=window.innerHeight;
+	canvas.width=win_width;
+	canvas.height=win_height;
+	
+	for (var i=0;i<5;i++){
+		var r = Math.random()*20+1;
+		var x =randomIntFromRange(mouse.x-5,mouse.x+5);
+		var y = randomIntFromRange(mouse.y-5,mouse.y+5);
+		var dx = randomIntFromRange(-2,2);
+		//var dy = (Math.random()-0.5);
+		var dy=1;
+		
+		var color_style =colorArray[Math.floor(Math.random()*colorArray.length)];
+		var circle = new Circle(x,y,dx,dy,r,color_style);
+
+		circleArry.push(circle);
+	}
+});
 var circleArry=[];
+var friction = 0.9;
+var gravity=1;
+var count=100;
 init();
 function init(){
 	win_width=window.innerWidth;
@@ -40,12 +73,14 @@ function init(){
 	canvas.width=win_width;
 	canvas.height=win_height;
 	circleArry=[];
-	for (var i=0;i<800;i++){
+	for (var i=0;i<count;i++){
 	var r = Math.random()*20+1;
 	var x = Math.random()*(win_width -2*r) + r;
 	var y = Math.random()*(win_height-2*r) + r;
-	var dx = (Math.random()-0.5)*3;
-	var dy = (Math.random()-0.5)*3;
+	var dx = randomIntFromRange(-2,2);
+	//var dy = (Math.random()-0.5);
+	var dy=1;
+	
 	var color_style =colorArray[Math.floor(Math.random()*colorArray.length)];
 	var circle = new Circle(x,y,dx,dy,r,color_style);
 
@@ -56,25 +91,46 @@ function init(){
 $('#banner').css('top',win_height/2);
 $('#banner').css('left',0);
 $('#banner').css('right',0);
+
+
 function Circle(x,y,dx,dy,r,color_style){
 	this.x = x;
 	this.y = y;
 	this.dx=dx;
 	this.dy=dy;
+	this.before_hity=y;
 	this.r=r;
 	this.color_style=color_style;
-
+	this.vy=true;
 	this.min_r=r;
 	this.draw = function(){
 		c.beginPath();
 		c.arc(this.x,this.y,this.r,0,Math.PI*2,false);
 		c.fillStyle=color_style;
 		c.fill();
+		c.stroke();
+		c.closePath();
 	}
 	this.update=function(){
+
+		if(this.vy==true){
+			
+			if(this.y+this.r+this.dy>win_height ){
+				this.dy=-this.dy*friction;
+				
+				if(Math.abs(this.dy)<gravity/5){this.vy=false;this.dy=0;}
+
+				
+			}else{
+				this.dy +=gravity;
+			}																	
+		}
+		this.y+=this.dy;
 		if(this.x+this.r>win_width || this.x-this.r<0){this.dx=-this.dx;}
-		if(this.y+this.r>win_height || this.y-this.r<0){this.dy=-this.dy;}
 		this.x+=this.dx;
+
+		/*
+		if(this.y+this.r>win_height || this.y-this.r<0){this.dy=-this.dy;}
 		this.y+=this.dy;
 
 		//interactive
@@ -87,7 +143,7 @@ function Circle(x,y,dx,dy,r,color_style){
 			
 		}else if (this.r>this.min_r){
 			this.r-=1;
-		}
+		}*/
 
 		this.draw();
 	}
