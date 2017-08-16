@@ -50,8 +50,8 @@ $('#main_canv').click(function(){
 	
 	for (var i=0;i<5;i++){
 		var r = Math.random()*20+1;
-		var x =randomIntFromRange(mouse.x-5,mouse.x+5);
-		var y = randomIntFromRange(mouse.y-5,mouse.y+5);
+		var x =randomIntFromRange(mouse.x-10,mouse.x+10);
+		var y = randomIntFromRange(mouse.y-10,mouse.y+10);
 		var dx = randomIntFromRange(-2,2);
 		//var dy = (Math.random()-0.5);
 		var dy=1;
