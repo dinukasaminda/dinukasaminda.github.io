@@ -5,7 +5,9 @@ var win_height=undefined;
 
 
 var canvas = document.getElementById('main_canv');
-
+canvas.onmousedown = function(){
+  return false;
+};
 var c = canvas.getContext('2d');
 
 
